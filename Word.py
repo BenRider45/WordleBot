@@ -5,6 +5,7 @@ import WordLetter
 
 class Word:
     def __init__(self):
+        #each sublist represents the possible letters in each block.
         self.Lettlst=[['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
         ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
         ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
@@ -14,6 +15,8 @@ class Word:
         self.WORD_FOUND=False
 
     def checkTurn(self,tableLst):
+        #iterates through the most recent entry's results and eliminaties letters 
+        #that are not in the answer from the possible letter choices for each block
         counter=0
         ALL_CORRECT=True
         for i in range(self.lstStartNum,self.lstStartNum+5):
@@ -38,6 +41,7 @@ class Word:
             self.WORD_FOUND=True
     
     def FindNextWord(self):
+        #Uses the available letters to choose a word from a list of all possible words
         pass
 
         
