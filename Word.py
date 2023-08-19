@@ -8,6 +8,7 @@ class GreenLett:
 
     def addLoc(self, loc):
         self.location.append(loc)
+
 class YellowLett:
     def __init__(self,lettr,loc):
         self.lettr=lettr
@@ -58,19 +59,24 @@ class Word:
         counter=0
         ALL_CORRECT=True
         REPEAT=False
+        print("Got here")
         for i in range(self.lstStartNum,self.lstStartNum+5):
-            let=tableLst[i][0]
-            status=tableLst[i][2:]
+            print(i)
+            print(tableLst[i])
+            let=tableLst[i][1]
+            status=tableLst[i][15:]
+            print(f"let: {let},status: {status}")
             if status=='absent':
+                print("Absent Status detected")
                 ALL_CORRECT=False
                 if let not in self.blackLets:
                     self.blackLets.append(let)
-                
+                    
                 # for item in self.Lettlst:
                 #     if let in item:
                 #         item.remove(let)
             
-            if status=='present':
+            if status=='present in another position':
                 ALL_CORRECT=False
                 LettInList=False
                 for item in self.yellowLets:
@@ -108,12 +114,38 @@ class Word:
         if ALL_CORRECT:
             self.WORD_FOUND=True
     
+    def FilterWordList(self):
+        for item in self.WORD_LIST:
+            for lett in self.blackLets:
+                if lett in item:
+                    if item in self.WORD_LIST:
+                        self.WORD_LIST.remove(item)
+                    break
+            for greenlet in self.greenLets:
+                for loc in greenlet.location:
+                    if loc!=greenlet.lettr:
+                        if item in self.WORD_LIST:
+                            self.WORD_LIST.remove(item)
+                        break
+            for yellowlet in self.yellowLets:
+                LETINWORD=False
+                for loc in yellowlet.possibleLocs:
+                    if LETINWORD:
+                        break
+                    if item[loc]==yellowlet.lettr:
+                        LETINWORD=True
+                if LETINWORD==False:
+                    if item in self.WORD_LIST:
+                        self.WORD_LIST.remove(item)
+                    break
+    
+
+
+            
     def FindNextWord(self):
         #Uses the available letters to choose a word from a list of all possible words
-        word= random.choice(self.WORD_LIST)
-        while self.CheckWordValid(word)==False:
-            word= random.choice(self.WORD_LIST)
-        return word
+        return random.choice(self.WORD_LIST)
+       
 
         # for item in self.WORD_LIST:
 

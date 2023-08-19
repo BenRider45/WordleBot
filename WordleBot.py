@@ -17,7 +17,7 @@ def gatherData():
 
 driver= webdriver.Chrome()
 driver.get("https://www.nytimes.com/games/wordle/index.html")
-btn=driver.find_element(By.XPATH,"/html/body/div/div/div/div/div[3]/button[2]")
+btn=driver.find_element(By.CLASS_NAME,"Welcome-module_button__ZG0Zh")
 blocker=driver.find_element(By.CLASS_NAME,"purr-blocker-card__button")
 if blocker is not None:
     blocker.click()
@@ -29,7 +29,7 @@ time.sleep(2)
 
 py.keyDown('esc')
 time.sleep(2)
-py.write("penis")
+py.write("lemur")
 py.keyDown("return")
 time.sleep(2)
 print(len(Word.WORD_LIST))
@@ -42,8 +42,13 @@ for item in Word.yellowLets:
     print(f"YellowLett: {item.lettr},{item.possibleLocs}")
 for item in Word.greenLets:
     print(f"GreenLett: {item.lettr},{item.location}")
+print(len(Word.WORD_LIST))
+Word.FilterWordList()
+print(len(Word.WORD_LIST))
 
-
+time.sleep(2)
+py.write(Word.FindNextWord())
+py.keyDown("return")
 
 time.sleep(10)
 driver.quit()
