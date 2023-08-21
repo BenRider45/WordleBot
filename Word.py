@@ -63,7 +63,7 @@ class Word:
         for i in range(self.lstStartNum,self.lstStartNum+5):
             print(i)
             print(tableLst[i])
-            let=tableLst[i][1]
+            let=tableLst[i][12]
             status=tableLst[i][15:]
             print(f"let: {let},status: {status}")
             if status=='absent':
