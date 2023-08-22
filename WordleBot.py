@@ -31,25 +31,24 @@ py.keyDown('esc')
 time.sleep(2)
 py.write("lemur")
 py.keyDown("return")
-time.sleep(2)
-print(len(Word.WORD_LIST))
-boxNamelst=gatherData()
-Word.checkTurn(boxNamelst)
-print("BlackLetts:")
-print(Word.blackLets)
-for item in Word.yellowLets:
-    print("Got here")
-    print(f"YellowLett: {item.lettr},{item.possibleLocs}")
-for item in Word.greenLets:
-    print(f"GreenLett: {item.lettr},{item.location}")
-print(len(Word.WORD_LIST))
-Word.FilterWordList()
-print(len(Word.WORD_LIST))
-
-time.sleep(2)
-py.write(Word.FindNextWord())
-py.keyDown("return")
-
+for i in range(5):
+    time.sleep(2)
+    print(len(Word.WORD_LIST))
+    boxNamelst=gatherData()
+    Word.checkTurn(boxNamelst)
+    print("BlackLetts:")
+    print(Word.blackLets)
+    for item in Word.yellowLets:
+        print(f"YellowLett: {item.lettr},{item.possibleLocs}")
+    for item in Word.greenLets:
+        print(f"GreenLett: {item.lettr},{item.location}")
+    print(f"WORD_LIST len: {len(Word.WORD_LIST)}")
+    Word.FilterWordList()
+    print(f"WORD_LIST len: {len(Word.WORD_LIST)}")
+    time.sleep(2)
+    py.write(Word.FindNextWord())
+    py.keyDown("return")
+    time.sleep(2)
 time.sleep(10)
 driver.quit()
 
