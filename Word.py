@@ -60,10 +60,14 @@ class Word:
             if status=='absent':
                 ALL_CORRECT=False
                 INGREEN=False
+                INYELLOW=False
+                for item in self.yellowLets:
+                    if item.lettr==let.lower():
+                        INYELLOW=True
                 for item in self.greenLets:
                     if item.lettr==let.lower():
                         INGREEN=True
-                if not INGREEN:
+                if not INGREEN and not INYELLOW:
                     if let.lower() not in self.blackLets:
                         self.blackLets.append(let.lower())
                     
@@ -95,6 +99,8 @@ class Word:
                 for item in self.yellowLets:
                     if item.lettr==let.lower():
                         self.yellowLets.remove(item)
+                if let.lower() in self.blackLets:
+                    self.blackLets.remove(let)
                 for item in self.greenLets:
                     if item.lettr==let.lower():
                         LettInList=True
