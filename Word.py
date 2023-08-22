@@ -59,8 +59,13 @@ class Word:
             status=tableLst[i][15:]
             if status=='absent':
                 ALL_CORRECT=False
-                if let.lower() not in self.blackLets:
-                    self.blackLets.append(let.lower())
+                INGREEN=False
+                for item in self.greenLets:
+                    if item.lettr==let.lower():
+                        INGREEN=True
+                if not INGREEN:
+                    if let.lower() not in self.blackLets:
+                        self.blackLets.append(let.lower())
                     
                 # for item in self.Lettlst:
                 #     if let in item:

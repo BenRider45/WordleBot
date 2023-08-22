@@ -32,6 +32,8 @@ time.sleep(2)
 py.write("lemur")
 py.keyDown("return")
 for i in range(5):
+    if Word.WORD_FOUND:
+        break
     time.sleep(2)
     print(len(Word.WORD_LIST))
     boxNamelst=gatherData()
@@ -45,7 +47,7 @@ for i in range(5):
     print(f"WORD_LIST len: {len(Word.WORD_LIST)}")
     Word.FilterWordList()
     print(f"WORD_LIST len: {len(Word.WORD_LIST)}")
-    time.sleep(2)
+    time.sleep(1)
     py.write(Word.FindNextWord())
     py.keyDown("return")
     time.sleep(2)
