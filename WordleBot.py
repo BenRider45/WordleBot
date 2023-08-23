@@ -21,8 +21,7 @@ btn=driver.find_element(By.CLASS_NAME,"Welcome-module_button__ZG0Zh")
 blocker=driver.find_element(By.CLASS_NAME,"purr-blocker-card__button")
 if blocker is not None:
     blocker.click()
-# py.keyDown('return')
-# time.sleep(5)
+
 btn.click()
 time.sleep(2)
 
@@ -53,29 +52,3 @@ for i in range(5):
     time.sleep(2)
 time.sleep(10)
 driver.quit()
-
-# keyboard= Controller()
-
-# webbrowser.open("https://www.nytimes.com/games/wordle/index.html")
-# time.sleep(1)
-# py.keyDown("tab")
-
-
-# py.keyDown("return")
-
-# py.write("www.nytimes.com/games/wordle/index.html")
-# py.keyDown('return')
-# time.sleep(2)
-# for i in range(25):
-#     py.keyDown('tab')
-#     time.sleep(.01)
-# py.keyDown('return')
-# for char in WEB_LINK:
-#     keyboard.press(char)
-#     print("got here")
-#     keyboard.release(char)
-#     time.sleep(.0005)
-# keyboard.press(Key.enter)
-
-
-# main()

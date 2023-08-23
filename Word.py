@@ -23,11 +23,6 @@ class YellowLett:
 class Word:
     def __init__(self):
         #each sublist represents the possible letters in each block.
-        self.Lettlst=[['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
-        ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','q','r','s','t','u','v','w','x','y','z'],
-        ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','q','r','s','t','u','v','w','x','y','z'],
-        ['a','b','c','d','e','f','g','h','i','j','k','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
-        ['a','b','c','d','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']]
         self.greenLets=[]
         self.yellowLets=[]
         self.blackLets=[]
@@ -166,19 +161,6 @@ class Word:
         #Uses the available letters to choose a word from a list of all possible words
         print(len(self.WORD_LIST))
         return random.choice(self.WORD_LIST)
-       
-
-        # for item in self.WORD_LIST:
-
-            
-        #     for i in range(5):
-        #         print(item[i])
-        #         if item[i] not in self.Lettlst[i]:
-                    
-        #             self.WORD_LIST.remove(item)
-        #             print(item in self.WORD_LIST)
-        #             break
-        # return random.choice(self.WORD_LIST)
 
 
 
