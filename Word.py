@@ -65,11 +65,7 @@ class Word:
                 if not INGREEN and not INYELLOW:
                     if let.lower() not in self.blackLets:
                         self.blackLets.append(let.lower())
-                    
-                # for item in self.Lettlst:
-                #     if let in item:
-                #         item.remove(let)
-            
+
             if status=='present in another position':
                 ALL_CORRECT=False
                 LettInList=False
@@ -86,9 +82,6 @@ class Word:
                     self.yellowLets.append(x)
                         
 
-
-                # if let in self.Lettlst[counter]:
-                #     self.Lettlst[counter].remove(let)
             if status=='correct':
                 LettInList=False
                 for item in self.yellowLets:
@@ -105,18 +98,15 @@ class Word:
                     x=GreenLett(let.lower(),counter)
                     self.greenLets.append(x)
 
-                            
-                
-
-
-                # self.Lettlst[counter]=[let]
-            
+                                        
             counter+=1
         self.lstStartNum+=5
         if ALL_CORRECT:
             self.WORD_FOUND=True
     
     def FilterWordList(self):
+        #Iteratres through word database and eliminates words that arent possible entries given
+        #the data retrieved from Wordle
         i=0
         WORDDELETED=False
         while i< len(self.WORD_LIST):
@@ -152,14 +142,12 @@ class Word:
             if WORDDELETED==False:
                 i+=1
 
-        print(self.WORD_LIST)
     
 
     
             
     def FindNextWord(self):
         #Uses the available letters to choose a word from a list of all possible words
-        print(len(self.WORD_LIST))
         return random.choice(self.WORD_LIST)
 
 

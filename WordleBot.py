@@ -1,6 +1,4 @@
-import webbrowser
 import pyautogui as py
-from pynput.keyboard import  Key, Controller
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
@@ -25,30 +23,35 @@ if blocker is not None:
 btn.click()
 time.sleep(2)
 
-
+#Entering the first word entry
 py.keyDown('esc')
 time.sleep(2)
 py.write("lemur")
 py.keyDown("return")
+
+#Enters a word or collects datwa either 5 more times or until the word is found
 for i in range(5):
     if Word.WORD_FOUND:
         break
     time.sleep(2)
-    print(len(Word.WORD_LIST))
+    #print(len(Word.WORD_LIST))
     boxNamelst=gatherData()
     Word.checkTurn(boxNamelst)
-    print("BlackLetts:")
-    print(Word.blackLets)
-    for item in Word.yellowLets:
-        print(f"YellowLett: {item.lettr},{item.possibleLocs}")
-    for item in Word.greenLets:
-        print(f"GreenLett: {item.lettr},{item.location}")
-    print(f"WORD_LIST len: {len(Word.WORD_LIST)}")
+    #print("BlackLetts:")
+    #print(Word.blackLets)
+    #for item in Word.yellowLets:
+        #print(f"YellowLett: {item.lettr},{item.possibleLocs}")
+    #for item in Word.greenLets:
+        #print(f"GreenLett: {item.lettr},{item.location}")
+    #print(f"WORD_LIST len: {len(Word.WORD_LIST)}")
     Word.FilterWordList()
-    print(f"WORD_LIST len: {len(Word.WORD_LIST)}")
+    #print(f"WORD_LIST len: {len(Word.WORD_LIST)}")
     time.sleep(1)
     py.write(Word.FindNextWord())
     py.keyDown("return")
     time.sleep(2)
-time.sleep(10)
+
+if Word.WORD_FOUND:
+    print("Word Found!")
+time.sleep(3)
 driver.quit()
