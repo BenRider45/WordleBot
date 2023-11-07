@@ -1,5 +1,6 @@
 import pyautogui as py
 from selenium import webdriver
+from selenium.common import exceptions
 from selenium.webdriver.common.by import By
 import time
 import Word as W
@@ -16,9 +17,17 @@ def gatherData():
 driver= webdriver.Chrome()
 driver.get("https://www.nytimes.com/games/wordle/index.html")
 btn=driver.find_element(By.CLASS_NAME,"Welcome-module_button__ZG0Zh")
-blocker=driver.find_element(By.CLASS_NAME,"purr-blocker-card__button")
-if blocker is not None:
-    blocker.click()
+try:
+    blocker=driver.find_element(By.CLASS_NAME,"purr-blocker-card__button")
+    if blocker is not None:
+        blocker.click()
+except exceptions.NoSuchElementException:
+    doNothing=True
+except:
+    print("Different oopsie occured")
+
+
+
 
 btn.click()
 time.sleep(2)
