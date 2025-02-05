@@ -16,7 +16,18 @@ def gatherData():
 
 driver= webdriver.Chrome()
 driver.get("https://www.nytimes.com/games/wordle/index.html")
-btn=driver.find_element(By.CSS_SELECTOR,"body > div:nth-child(2) > div > div > div > div > div.Welcome-module_buttonContainer__K4GEw > button:nth-child(3)") 
+try:
+    termsAndCondButton = driver.find_element(By.XPATH,"/html/body/div[3]/div/div/button")
+    if termsAndCondButton is not None:
+        termsAndCondButton.click()
+    btn=driver.find_element(By.XPATH,"/html/body/div[2]/div/div/div/div/div[2]/button[3]") 
+
+except exceptions.NoSuchElementException:
+    print("No Element Found!")
+except:
+    print("Extra Broken")
+
+#btn=driver.find_element(By.CSS_SELECTOR,"body > div:nth-child(2) > div > div > div > div > div.Welcome-module_buttonContainer__K4GEw > button:nth-child(3)") 
 try:
     blocker=driver.find_element(By.CLASS_NAME,"Modal-module_closeIcon__TcEKb")
     if blocker is not None:
